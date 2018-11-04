@@ -1,2 +1,2 @@
-# webcool
-some examples in my spare time
+# funkyblog
+some notes in my spare time
