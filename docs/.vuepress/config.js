@@ -17,7 +17,7 @@ module.exports = {
       '/egret/': [
         '',     /* /tech/index.md */
         ['event', 'egret事件机制'],
-        ['MVC', '一个基于egret的MVC架构'],
+        ['MVC1', '一个基于egret的MVC架构'],
         ['/summary', '返回分类']
       ],
       '/tech/': [
