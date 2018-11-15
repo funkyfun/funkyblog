@@ -87,13 +87,15 @@ addEventListener和once的区别在于addEventListener注册的事件如果不�
 
 ### dispatchEvent
 事件的流向载体是显示列表，也就是egret的parent和child关系。
-todo
+dispatch的过程其实就是拿到dispatcher上的eventsMap和captureEventsMap（看是冒泡还是捕获阶段）,看里面有没有这个事件的回调，然后执行。
+egret.DisplayObject在dispatch的时候会去遍历父节点，然后将父节点一个个按顺序放入数组，然后再拷贝一份倒置顺序，然后合并两个数组，dispatch的时候再去遍历这个数组然后挨个notify，这样就模拟了冒泡和捕获。
 
 ### dispatchEvent和dispatchEventWith
-todo
+dispatchEventWith内部调用了Event.create从对象池中获取事件对象，然后调用dispatchEvent，理论上比直接调用dispatchEvent性能要好。
 
 ### evenBus跨组件通信
-todo
+由于事件是通过显示列表的父子关系来实现冒泡和捕获，有时候我们想在子组件通知父组件做一些操作时，父组件监听一个自定义事件，子组件派发这个事件就行，但兄弟节点就不能实现这种事件通信。
+这个时候我们可以创建一个EventBus（new一个EventDispatcher），在a组件中通过EventBus来注册事件回调，然后在b组件通过EventBus派发事件。
 
 ## 事件机制的注意点
 - 事件类型为字符串类型，容易造成冲突，事件类型尽量集中统一定义，通过业务加不同的前缀，规避和引擎定义的类型冲突。
