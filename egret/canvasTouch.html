@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>处理Canvas上元素的点击事件 | FunkyFun</title>
+    <meta name="description" content="处理Canvas上元素的点击事件">
+    
+    
+    <link rel="preload" href="/assets/css/styles.11ed2571.css" as="style"><link rel="preload" href="/assets/js/app.11ed2571.js" as="script"><link rel="preload" href="/assets/js/8.e7f9ae54.js" as="script"><link rel="prefetch" href="/assets/css/1.styles.9b755c4e.css"><link rel="prefetch" href="/assets/css/2.styles.a2bd3099.css"><link rel="prefetch" href="/assets/js/1.9b755c4e.js"><link rel="prefetch" href="/assets/js/10.f40c243a.js"><link rel="prefetch" href="/assets/js/11.783dce6a.js"><link rel="prefetch" href="/assets/js/12.8675bc87.js"><link rel="prefetch" href="/assets/js/13.b22ee64f.js"><link rel="prefetch" href="/assets/js/2.a2bd3099.js"><link rel="prefetch" href="/assets/js/3.602fac18.js"><link rel="prefetch" href="/assets/js/4.96c12584.js"><link rel="prefetch" href="/assets/js/5.8c87e54c.js"><link rel="prefetch" href="/assets/js/6.b8437547.js"><link rel="prefetch" href="/assets/js/7.d5fa8bac.js"><link rel="prefetch" href="/assets/js/9.c7315dac.js">
+    <link rel="stylesheet" href="/assets/css/1.styles.9b755c4e.css"><link rel="stylesheet" href="/assets/css/2.styles.a2bd3099.css"><link rel="stylesheet" href="/assets/css/styles.11ed2571.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">FunkyFun</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"> <a href="https://github.com/funkyfun/funkyblog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"> <a href="https://github.com/funkyfun/funkyblog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/egret/" class="sidebar-link">开篇</a></li><li><a href="/egret/event.html" class="sidebar-link">egret事件机制</a></li><li><a href="/egret/MVC1.html" class="sidebar-link">一个基于egret的MVC架构</a></li><li><a href="/egret/canvasTouch.html" class="active sidebar-link">处理Canvas上元素的点击事件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/egret/canvasTouch.html#简化问题" class="sidebar-link">简化问题</a></li><li class="sidebar-sub-header"><a href="/egret/canvasTouch.html#结构设计" class="sidebar-link">结构设计</a></li><li class="sidebar-sub-header"><a href="/egret/canvasTouch.html#实现" class="sidebar-link">实现</a></li></ul></li><li><a href="/summary.html" class="sidebar-link">返回分类</a></li></ul> </div> <div class="page"> <div class="content"><h1 id="处理canvas上元素的点击事件"><a href="#处理canvas上元素的点击事件" aria-hidden="true" class="header-anchor">#</a> 处理Canvas上元素的点击事件</h1> <hr> <p>之前有简单的分析了<a href="https://blog.funkyfun.cn/egret/event.html" target="_blank" rel="noopener noreferrer">egret的事件实现<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>,而触摸事件/点击事件一直以来是客户端交互的主要承载者，参照egret这块的实现，最近先来有空来实现了<a href="https://github.com/funkyfun/canvas-touch" target="_blank" rel="noopener noreferrer">一个Canvas上的点击处理DEMO<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，简化了大部分细节，原因一是目的只为搞清楚原理，二是真正要处理的细节真的很多。</p> <hr> <blockquote><p>我们在浏览器处理点击交互时，通常是在DOM元素上注册点击事件监听函数<code>(domElement.addEventListener('click', callback))</code>，而Canvas作为一个DOM元素，我们要怎么处理画在Canvas上的元素的点击呢？</p></blockquote> <h2 id="简化问题"><a href="#简化问题" aria-hidden="true" class="header-anchor">#</a> 简化问题</h2> <p>Canvas相关知识点很多，关注点过多，容易让问题变得越来越复杂，就像阅读某个库的源码，分解问题，简化问题，忽略一些细节实现，专注关注点，逐个击破，往往能让我们更容易分析问题得出结论。
+所以在这里，抛开Canvas的渲染相关，只使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage" target="_blank" rel="noopener noreferrer">drawImage<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>来绘制图片元素，使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Advanced_animations" target="_blank" rel="noopener noreferrer">requestAnimationFrame<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>来实现帧函数。
+坐标系：以Canvas左上角为坐标原点(0,0),x轴向右递增，y轴向下递增，所有元素坐标锚点在左上角，所有元素的坐标为全局坐标(通常引擎的做法是每个容器元素一个坐标系，子元素相对父元素的坐标)。
+<img src="https://gstatic.funkyfun.cn/common/canvastouch/canvas_touch_coordinates.png" alt="coordinates"></p> <h2 id="结构设计"><a href="#结构设计" aria-hidden="true" class="header-anchor">#</a> 结构设计</h2> <div class="language- extra-class"><pre class="language-text"><code>节点关系
+├─┬ CanvasElement 原生dom
+│ ├─┬ Stage 舞台对象，绘制节点的根节点
+│ │ ├── Sprite 绘制的节点对象
+
+继承关系
+Stage=&gt;Sprite=&gt;EventEmitter
+</code></pre></div><ul><li>EventEmitter 实现自定义事件</li> <li>Sprite Canvas内基本绘制节点/容器，记录节点信息</li> <li>Stage 舞台，Sprite节点的根节点，管理渲染</li></ul> <h2 id="实现"><a href="#实现" aria-hidden="true" class="header-anchor">#</a> 实现</h2> <p>监听Canvas的原生点击事件，计算Canvas在页面上的位置，获取鼠标点击在页面上的坐标点，<code>点击点坐标</code> - <code>Canvas位置偏移量</code> = <code>点击点再Canvas坐标系上的坐标</code>。</p> <div class="language-js extra-class"><pre class="language-js"><code>  <span class="token comment">// Stage.js</span>
+  <span class="token function">initTouchHandel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>_stageEl<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// egret引擎的实现</span>
+      <span class="token comment">// https://github.com/egret-labs/egret-core/blob/31ce53495642e847ccdd4f90f5a223d2e3526f35/src/egret/web/WebTouchHandler.ts#L177</span>
+      <span class="token keyword">const</span> doc <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement
+      <span class="token keyword">const</span> box <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_stageEl<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">const</span> left <span class="token operator">=</span> box<span class="token punctuation">.</span>left <span class="token operator">+</span> window<span class="token punctuation">.</span>pageXOffset <span class="token operator">-</span> doc<span class="token punctuation">.</span>clientLeft
+      <span class="token keyword">const</span> top <span class="token operator">=</span> box<span class="token punctuation">.</span>top <span class="token operator">+</span> window<span class="token punctuation">.</span>pageYOffset <span class="token operator">-</span> doc<span class="token punctuation">.</span>clientTop
+      <span class="token keyword">let</span> x <span class="token operator">=</span> event<span class="token punctuation">.</span>pageX <span class="token operator">-</span> left
+      <span class="token keyword">let</span> y <span class="token operator">=</span> event<span class="token punctuation">.</span>pageY <span class="token operator">-</span> top
+      <span class="token comment">// 得到点击点再Canvas坐标系的坐标xy</span>
+      <span class="token comment">// 根据坐标信息找到命中的元素</span>
+      <span class="token keyword">let</span> sp <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">findTarget</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_children<span class="token punctuation">)</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">emitClick</span><span class="token punctuation">(</span>sp<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">/**
+   * 根据坐标找击中的目标
+   */</span>
+  <span class="token function">findTarget</span><span class="token punctuation">(</span>pointX<span class="token punctuation">,</span> pointY<span class="token punctuation">,</span> children<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> children<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>sp <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> rs <span class="token operator">=</span> sp<span class="token punctuation">.</span><span class="token function">hitTest</span><span class="token punctuation">(</span>pointX<span class="token punctuation">,</span> pointY<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token operator">!</span><span class="token operator">!</span>rs
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">/**
+   * 派发自定义点击事件
+   */</span>
+  <span class="token function">emitClick</span><span class="token punctuation">(</span>sp<span class="token punctuation">,</span>stageX<span class="token punctuation">,</span> stageY<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>sp<span class="token punctuation">)</span> <span class="token keyword">return</span>
+    <span class="token keyword">const</span> children <span class="token operator">=</span> sp<span class="token punctuation">.</span>_children
+    <span class="token keyword">const</span> len <span class="token operator">=</span> children<span class="token punctuation">.</span>length
+    <span class="token keyword">const</span> emitList <span class="token operator">=</span> <span class="token punctuation">[</span>sp<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>len<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> child <span class="token operator">=</span> children<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>child<span class="token punctuation">.</span><span class="token function">hitTest</span><span class="token punctuation">(</span>stageX<span class="token punctuation">,</span> stageY<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          emitList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    emitList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>child<span class="token operator">=&gt;</span> child<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>stageX<span class="token punctuation">,</span> stageY<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><p>由于换算获取到了点击相对Canvas的坐标点，而Canvas内只有一个坐标系，所以这里很好实现元素的点击检测。</p> <div class="language-js extra-class"><pre class="language-js"><code>  <span class="token comment">// Sprite.js</span>
+  <span class="token function">hitTest</span><span class="token punctuation">(</span>stageX<span class="token punctuation">,</span> stageY<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> sp <span class="token operator">=</span> <span class="token keyword">this</span>
+    <span class="token keyword">let</span> rs <span class="token operator">=</span> <span class="token boolean">false</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>
+      sp<span class="token punctuation">.</span>width <span class="token operator">&gt;</span> <span class="token number">0</span> 
+      <span class="token operator">&amp;&amp;</span> sp<span class="token punctuation">.</span>height <span class="token operator">&gt;</span> <span class="token number">0</span>
+      <span class="token operator">&amp;&amp;</span> sp<span class="token punctuation">.</span>touchEnable
+    <span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">const</span> <span class="token punctuation">{</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">}</span> <span class="token operator">=</span> sp
+      rs <span class="token operator">=</span> <span class="token punctuation">(</span>stageX <span class="token operator">&gt;</span> x <span class="token operator">&amp;&amp;</span> stageX <span class="token operator">&lt;</span> x <span class="token operator">+</span> width<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>stageY <span class="token operator">&gt;</span> y <span class="token operator">&amp;&amp;</span> stageY <span class="token operator">&lt;</span> y <span class="token operator">+</span> height<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> rs
+  <span class="token punctuation">}</span>
+</code></pre></div></div> <div class="page-edit"><div class="edit-link"><a href="https://github.com/funkyfun/funkyblog/edit/master/docs/egret/canvasTouch.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/egret/MVC1.html" class="prev">
+          一个基于egret的MVC架构
+        </a></span> <span class="next"><a href="/summary.html">
+          返回分类
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/8.e7f9ae54.js" defer></script><script src="/assets/js/app.11ed2571.js" defer></script>
+  </body>
+</html>
